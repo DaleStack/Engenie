@@ -1,8 +1,6 @@
 from django.urls import path
-from .views import generate_CreativeWriting, generate_ResearchAssistance, generate_Brainstorm
+from .views import generate_generic_view
 
 urlpatterns = [
-    path('chat/<int:pk>/', generate_CreativeWriting, name='creative_writing'),
-    path('chat/<int:pk>/', generate_ResearchAssistance, name='research_assistance'),
-    path('chat/<int:pk>/', generate_Brainstorm, name='brainstorm'),
+    path("chat/<int:pk>/<str:mode>/", generate_generic_view, name="generate_content")
 ]
