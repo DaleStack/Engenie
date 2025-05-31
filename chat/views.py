@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import PromptTemplate
 import google.generativeai as genai
 from django.conf import settings
+import markdown
+from django.utils.safestring import mark_safe
 # Create your views here.
 
 def generate_CreativeWriting(request, pk):
@@ -12,21 +14,34 @@ def generate_CreativeWriting(request, pk):
         description = request.POST.get("Description")
         tone = request.POST.get("Tone")
 
-        # Fill the prompt using user input
+        # Format prompt from template with user input
         prompt = template.content.format(Idea=idea, Description=description, Tone=tone)
 
-        # Configure and call Gemini API
+        # Configure Gemini API
         genai.configure(api_key=settings.GOOGLE_API_KEY)
         model = genai.GenerativeModel("gemini-2.0-flash")
-        response = model.generate_content(prompt)
+
+        try:
+            # Generate content from model
+            result = model.generate_content(prompt)
+            if hasattr(result, "text"):
+                generated_markdown = result.text
+            else:
+                generated_markdown = str(result)
+
+            # Convert Markdown to HTML safely
+            html_result = mark_safe(markdown.markdown(generated_markdown))
+
+        except Exception as e:
+            html_result = f"<p>Error generating content: {e}</p>"
 
         return render(request, "chat/result.html", {
-            'idea':idea,
-            'description':description,
-            'tone':tone,
-            "result": response.text,
+            "idea": idea,
+            "description": description,
+            "tone": tone,
             "template": template,
             "prompt": prompt,
+            "result": html_result,
         })
 
     return render(request, "chat/CreativeWriting.html", {
@@ -42,21 +57,34 @@ def generate_ResearchAssistance(request, pk):
         description = request.POST.get("Description")
         tone = request.POST.get("Tone")
 
-        # Fill the prompt using user input
+        # Format prompt from template with user input
         prompt = template.content.format(Idea=idea, Description=description, Tone=tone)
 
-        # Configure and call Gemini API
+        # Configure Gemini API
         genai.configure(api_key=settings.GOOGLE_API_KEY)
         model = genai.GenerativeModel("gemini-2.0-flash")
-        response = model.generate_content(prompt)
+
+        try:
+            # Generate content from model
+            result = model.generate_content(prompt)
+            if hasattr(result, "text"):
+                generated_markdown = result.text
+            else:
+                generated_markdown = str(result)
+
+            # Convert Markdown to HTML safely
+            html_result = mark_safe(markdown.markdown(generated_markdown))
+
+        except Exception as e:
+            html_result = f"<p>Error generating content: {e}</p>"
 
         return render(request, "chat/result.html", {
-            'idea':idea,
-            'description':description,
-            'tone':tone,
-            "result": response.text,
+            "idea": idea,
+            "description": description,
+            "tone": tone,
             "template": template,
             "prompt": prompt,
+            "result": html_result,
         })
 
     return render(request, "chat/ResearchAssistance.html", {
