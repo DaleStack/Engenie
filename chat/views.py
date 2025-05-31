@@ -35,7 +35,7 @@ def generate_CreativeWriting(request, pk):
         except Exception as e:
             html_result = f"<p>Error generating content: {e}</p>"
 
-        return render(request, "chat/result.html", {
+        return render(request, "chat/pages/result.html", {
             "idea": idea,
             "description": description,
             "tone": tone,
@@ -44,7 +44,7 @@ def generate_CreativeWriting(request, pk):
             "result": html_result,
         })
 
-    return render(request, "chat/CreativeWriting.html", {
+    return render(request, "chat/pages/CreativeWriting.html", {
         "template": template
     })
 
@@ -78,7 +78,7 @@ def generate_ResearchAssistance(request, pk):
         except Exception as e:
             html_result = f"<p>Error generating content: {e}</p>"
 
-        return render(request, "chat/result.html", {
+        return render(request, "chat/pages/result.html", {
             "idea": idea,
             "description": description,
             "tone": tone,
@@ -87,7 +87,7 @@ def generate_ResearchAssistance(request, pk):
             "result": html_result,
         })
 
-    return render(request, "chat/ResearchAssistance.html", {
+    return render(request, "chat/pages/ResearchAssistance.html", {
         "template": template
     })
 
@@ -120,7 +120,7 @@ def generate_Brainstorm(request, pk):
         except Exception as e:
             html_result = f"<p>Error generating content: {e}</p>"
 
-        return render(request, "chat/result.html", {
+        return render(request, "chat/pages/result.html", {
             "idea": idea,
             "description": description,
             "tone": tone,
@@ -129,6 +129,6 @@ def generate_Brainstorm(request, pk):
             "result": html_result,
         })
 
-    return render(request, "chat/Brainstorm.html", {
+    return render(request, "chat/pages/Brainstorm.html", {
         "template": template
     })
