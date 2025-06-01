@@ -74,3 +74,5 @@ def generate_content_view(request, pk, form_template, context_name):
     })
 
 
+def home_view(request):
+    return render(request, 'chat/home_view.html')

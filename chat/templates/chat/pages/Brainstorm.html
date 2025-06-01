@@ -12,7 +12,7 @@
     }
   </style>
 <div class="py-6 z-10 top-0 px-2 lg:px-40 flex items-center flex-col lg:flex-row lg:gap-8">
-    <a href="" class="flex items-center text-teal-900">
+    <a href="{% url 'home_view' %}" class="flex items-center text-teal-900">
         <img class="h-8 w-8" src="{% static 'chat/images/left.svg' %}" alt="light">
         <p>Back to Categories</p>
     </a>
@@ -35,7 +35,7 @@
             </div>
             <div>
                 <label for="Description" class="">Description & Details</label>
-                <textarea name="Description" placeholder="Describe the problem, constraints, goals, or context for the brainstorming session..." class="w-full h-30 mb-4 p-2 border border-gray-300 rounded resize-none"></textarea>
+                <textarea name="Description" placeholder="Describe the problem, constraints, goals, or context for the brainstorming session...>" class="w-full h-30 mb-4 p-2 border border-gray-300 rounded resize-none"></textarea>
             </div>
             <div>
                 <label for="Tone">Tone & Style</label>
