@@ -1,16 +1,88 @@
-{% extends "chat/base.html" %}
-
+{% extends 'chat/base.html' %}
+{% load static %}
 {% block content %}
-BRAISNTORMMM
-    <form action="" method="POST">
-        {% csrf_token %}
-        <input type="text" name="Idea">
-        <input type="text">
-        <textarea name="Description" id=""></textarea>
-        <select name="Tone" id="">
-            <option value="Casual">Casual</option>
-            <option value="Formal">Formal</option>
-        </select>
-        <button type="submit">Submit</button>
-    </form>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Iceland&display=swap');
+
+    div {
+      font-family: 'Geist Mono';
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
+    }
+  </style>
+<div class="py-6 z-10 top-0 px-2 lg:px-40 flex items-center flex-col lg:flex-row lg:gap-8">
+    <a href="" class="flex items-center text-teal-900">
+        <img class="h-8 w-8" src="{% static 'chat/images/left.svg' %}" alt="light">
+        <p>Back to Categories</p>
+    </a>
+
+    <div class="flex items-center">
+        <div>
+            <img class="h-8 w-8" src="{% static 'chat/images/brainstorm.svg' %}" alt="light">
+        </div>
+        <h1 class="lg:text-2xl text-xl text-center font-bold text-teal-900">Brainstorming Partner</h1>
+    </div>
+</div>
+<div id="form-container" class="h-screen flex items-center justify-center px-2">
+        <form action="" method="POST" class="bg-white p-6 rounded-2xl shadow-md w-full max-w-md lg:max-w-2xl gap-2 flex flex-col border border-teal-400/50">
+            {% csrf_token %}
+            <p class="self-center font-bold text-2xl text-center">Generate Your Perfect Prompt</p>
+
+            <div>
+                <label for="Idea" class="">Your Idea</label>
+                <input type="text" name="Idea" placeholder="e.g., Improving team productivity in remote work" class="w-full mb-4 p-2 border border-gray-300 rounded">
+            </div>
+            <div>
+                <label for="Description" class="">Description & Details</label>
+                <textarea name="Description" placeholder="Describe the problem, constraints, goals, or context for the brainstorming session..." class="w-full h-30 mb-4 p-2 border border-gray-300 rounded resize-none"></textarea>
+            </div>
+            <div>
+                <label for="Tone">Tone & Style</label>
+                <select name="Tone" class="w-full mb-4 p-2 border border-gray-300 rounded">
+                    <option value="Neutral">Neutral</option>
+                    <option value="Casual">Casual</option>
+                    <option value="Formal">Formal</option>
+                    <option value="Professional">Professional</option>
+                    <option value="Friendly">Friendly</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-accent bg-amber-500 w-full text-white py-2 rounded">Submit</button>
+        </form>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.querySelector('form');
+    const inputs = form.querySelectorAll('input, textarea, select');
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    // Function to check if all fields are filled
+    function validateForm() {
+      let allFilled = true;
+      inputs.forEach(input => {
+        if (!input.value.trim()) {
+          allFilled = false;
+        }
+      });
+      submitBtn.disabled = !allFilled;
+    }
+
+    // Attach input listeners
+    inputs.forEach(input => {
+      input.addEventListener('input', validateForm);
+      input.addEventListener('change', validateForm); // For <select>
+    });
+
+    // Initial validation on load
+    validateForm();
+
+    // On form submit
+    form.addEventListener('submit', function (e) {
+      submitBtn.disabled = true;
+      submitBtn.innerText = 'Submitting...';
+    });
+  });
+</script>
+
 {% endblock %}
