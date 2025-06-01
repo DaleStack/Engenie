@@ -1,10 +1,41 @@
 {% extends 'chat/base.html' %}
+{% load static %}
 
 {% block content %}
-    <p>Idea: {{idea}}</p>
-    <p>Description: {{description}}</p>
-    <p>Tone: {{tone}}</p>
-    <div>
-        <p>{{result | safe }}</p>   
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Iceland&display=swap');
+
+    div {
+      font-family: 'Geist Mono';
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
+    }
+</style>
+<div class="py-6 z-10 top-0 px-2 lg:px-40 flex items-center flex-col lg:flex-row lg:gap-8">
+    <a href="" class="flex items-center text-teal-900">
+        <img class="h-8 w-8" src="{% static 'chat/images/left.svg' %}" alt="light">
+        <p>Back to Categories</p>
+    </a>
+
+    <div class="flex items-center">
+        <div>
+            <img class="h-8 w-8" src="{% static 'chat/images/result.svg' %}" alt="light">
+        </div>
+        <h1 class="lg:text-2xl text-xl text-center font-bold text-teal-900">Research Assistant</h1>
+    </div>
+</div>
+
+    <div class="px-2 flex flex-col justify-center items-center">
+        <div class="bg-white p-6 rounded-2xl shadow-md w-full max-w-md lg:max-w-2xl gap-2 flex flex-col border border-teal-400/50">
+            <p><span class="font-semibold">Idea: </span>{{idea}}</p>
+            <p><span class="font-semibold">Description: </span>{{description}}</p>
+            <p><span class="font-semibold">Tone: </span><span class="p-1 border rounded-xl border-teal-400/50">{{tone}}</span></p>
+        </div>
+        <div class="bg-white rounded-2xl border border-teal-400/50  inline-block p-4">
+            <div class="bg-teal-100/50 p-6 rounded-2xl shadow-md w-full max-w-md lg:max-w-2xl gap-2 flex flex-col border border-teal-400/50">
+                <p>{{result | safe }}</p>
+            </div>
+        </div>
     </div>
 {% endblock %}
