@@ -1,11 +1,39 @@
+{% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    HELLO FROM HOME
-</body>
+	<head>
+    <title>Engenie</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		{% tailwind_css %}
+		<link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Iceland&display=swap');
+
+            body {
+            font-family: 'Geist Mono';
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            }
+        </style>
+	</head>
+
+	<body class="min-h-screen">
+        <!--FIRST SECTION-->
+		<div class="bg-teal-600 min-h-[80vh] flex justify-center items-center">
+            <div class="flex flex-col items-center text-center gap-4 px-4">
+                <div class="bg-white p-4 rounded-full shadow-md shadow-white">
+                    <img src="{% static 'chat/images/logo.svg' %}" alt="logo" class="w-24 h-24">
+                </div>
+                <h1 class="text-white text-3xl font-bold">Engenie</h1>
+                <p class="text-white max-w-xl">
+                    Your AI-powered prompt engineering assistant that crafts perfect prompts for any task. Choose a category below to get started.
+                </p>
+                <a class="btn bg-white text-teal-600 font-semibold py-2 px-4 rounded shadow hover:bg-gray-100 transition">
+                    Choose Category
+                </a>
+            </div>
+    </div>
 </html>
