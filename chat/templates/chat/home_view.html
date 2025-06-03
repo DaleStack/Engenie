@@ -40,7 +40,7 @@
        <div class="bg-white min-h-screen flex justify-center items-center p-4">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Card 1 -->
-            <a href="#" class="max-w-sm w-full bg-white border border-teal-400/50 hover:scale-105 duration-300 transition-all rounded-lg shadow-md p-6 hover:shadow-lg flex flex-col items-center text-center space-y-4">
+            <a href="{% url 'generate_content' pk=1 mode='creative-writing' %}" class="max-w-sm w-full bg-white border border-teal-400/50 hover:scale-105 duration-300 transition-all rounded-lg shadow-md p-6 hover:shadow-lg flex flex-col items-center text-center space-y-4">
                 <img src="{% static 'chat/images/light.svg' %}" alt="Creative Writing Icon" class="w-16 h-16">
                 <div>
                     <h2 class="text-lg font-semibold text-gray-800">Creative Writing</h2>
@@ -58,7 +58,7 @@
             </a>
 
             <!-- Card 2 -->
-            <a href="#" class="max-w-sm w-full bg-white border border-teal-400/50 hover:scale-105 rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center space-y-4">
+            <a href="{% url 'generate_content' pk=2 mode='research-assistance' %}" class="max-w-sm w-full bg-white border border-teal-400/50 hover:scale-105 rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center space-y-4">
                 <img src="{% static 'chat/images/research.svg' %}" alt="Research Icon" class="w-16 h-16">
                 <div>
                     <h2 class="text-lg font-semibold text-gray-800">Research Assistant</h2>
@@ -76,7 +76,7 @@
             </a>
 
             <!-- Card 3 -->
-            <a href="#" class="max-w-sm w-full bg-white border border-teal-400/50 hover:scale-105 rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center space-y-4">
+            <a href="{% url 'generate_content' pk=3 mode='brainstorm' %}" class="max-w-sm w-full bg-white border border-teal-400/50 hover:scale-105 rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center space-y-4">
                 <img src="{% static 'chat/images/brainstorm.svg' %}" alt="Brainstorm Icon" class="w-16 h-16">
                 <div>
                     <h2 class="text-lg font-semibold text-gray-800">Brainstorming</h2>
