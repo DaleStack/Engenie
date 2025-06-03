@@ -17,6 +17,10 @@
             font-weight: 400;
             font-style: normal;
             }
+
+            html {
+            scroll-behavior: smooth;
+            }
         </style>
 	</head>
 
@@ -31,13 +35,17 @@
                 <p class="text-white max-w-xl">
                     Your AI-powered prompt engineering assistant that crafts perfect prompts for any task. Choose a category below to get started.
                 </p>
-                <a class="btn bg-white text-teal-600 font-semibold py-2 px-4 rounded shadow hover:bg-gray-100 transition">
+                <a href="#category-section" class="btn bg-white text-teal-600 font-semibold py-2 px-4 rounded shadow hover:bg-gray-100 transition">
                     Choose Category
                 </a>
             </div>
         </div>
 
-       <div class="bg-white min-h-screen flex justify-center items-center p-4">
+       <div id="category-section" class="bg-white min-h-screen flex flex-col justify-center items-center p-4 space-y-10">
+        <div class="text-center">
+            <p class="font-bold text-2xl text-teal-400">Choose Your Category</p>
+            <p class="text-black/50">Select the type of assistance you need and start chatting with your AI prompt engineer</p>
+        </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Card 1 -->
             <a href="{% url 'generate_content' pk=1 mode='creative-writing' %}" class="max-w-sm w-full bg-white border border-teal-400/50 hover:scale-105 duration-300 transition-all rounded-lg shadow-md p-6 hover:shadow-lg flex flex-col items-center text-center space-y-4">
@@ -55,6 +63,7 @@
                         <li>World Building</li>
                     </ul>
                 </div>
+                <button class="bg-teal-300 p-2 rounded-full cursor-pointer shadow-md">Start Chat</button>
             </a>
 
             <!-- Card 2 -->
@@ -73,6 +82,7 @@
                         <li>Topic Exploration</li>
                     </ul>
                 </div>
+                <button class="bg-teal-300 p-2 rounded-full cursor-pointer shadow-md">Start Chat</button>
             </a>
 
             <!-- Card 3 -->
@@ -91,6 +101,7 @@
                         <li>Problem Solving</li>
                     </ul>
                 </div>
+                <button class="bg-teal-300 p-2 rounded-full cursor-pointer shadow-md">Start Chat</button>
             </a>
         </div>
     </div>
